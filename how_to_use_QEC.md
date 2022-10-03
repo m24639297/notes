@@ -30,7 +30,7 @@ srun <<command>>
 echo "done"
 `
 
-and run `./run.sh`
+and run `sbatch run.sh`
 
 
 ## rust command
