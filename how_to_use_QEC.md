@@ -17,18 +17,17 @@ to compile.
 ### run something:
 run.sh:
 
-`
-#!/bin/bash
-#SBATCH --job-name=JOB_NAME
-#SBATCH --out="slurm-%j.out"
-#SBATCH --error="slurm-%j.err"
-#SBATCH --time=5:00:00
-#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=36 --mem=8G 
-#SBATCH --mail-type=ALL
-echo -n "Start "
-srun <<command>>
-echo "done"
-`
+
+> `#!/bin/bash`
+> `#SBATCH --job-name=JOB_NAME`
+> `#SBATCH --out="slurm-%j.out"`
+> `#SBATCH --error="slurm-%j.err"`
+> `#SBATCH --time=5:00:00`
+> `#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=36 --mem=8G `
+> `#SBATCH --mail-type=ALL`
+> `echo -n "Start "`
+> `srun <<command>>`
+> `echo "done"`
 
 and run `sbatch run.sh`
 
