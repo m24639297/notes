@@ -45,3 +45,5 @@ and run `sbatch run.sh`
 
 ## rust command
 `cargo run --release -- tool benchmark '[3]' '[4]' '[0.1]' --bias_eta 1e200 --code_type RotatedTailoredCode --decoder tailored-mwpm --decoder_config '{"pcmg":true,"naive_residual_decoding":true}' --error_model tailored-sc-bell-init-phenomenological -m1000000 -e20000 -p0 --time_budget 7200 --ignore_logical_j;`
+
+help: `cargo run --release -- tool benchmark --help`
