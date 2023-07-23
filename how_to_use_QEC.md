@@ -18,19 +18,19 @@ to compile.
 ### run something:
 run.sh:
 
-`#!/bin/bash
-#SBATCH --job-name=JOB_NAME
-#SBATCH --out="JOB_NAME_%a.out"
-#SBATCH --error="JOB_NAME_%a.err"
-#SBATCH --time=12:00:00
-#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=4 --mem=8G 
-#SBATCH --array=1-10
-#SBATCH --mail-type=END,FAIL
+`#!/bin/bash`
+`#SBATCH --job-name=JOB_NAME`
+`#SBATCH --out="JOB_NAME_%a.out"`
+`#SBATCH --error="JOB_NAME_%a.err"`
+`#SBATCH --time=12:00:00`
+`#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=4 --mem=8G `
+`#SBATCH --array=1-10`
+`#SBATCH --mail-type=END,FAIL`
 
- if [ $SLURM_ARRAY_TASK_ID -eq 1 ]
-then 
-    srun cargo run ...
-fi`
+`if [ $SLURM_ARRAY_TASK_ID -eq 1 ]`
+`then `
+`    srun cargo run ...`
+`fi`
 
 and run `sbatch run.sh`
 
