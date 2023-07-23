@@ -1,6 +1,7 @@
 ## syncronization to cluster
 
-Unison synchronization: ` unison-hpc-qec-playground`
+Unison synchronization: 
+`unison-hpc-qec-playground`
 
 Force to sync to local version
 `unison hpc-qec-playground -auto -batch -prefer /Users/pktsai/Desktop/pk/Yale/research/QEC-Playground`
@@ -17,33 +18,24 @@ to compile.
 ### run something:
 run.sh:
 
+`#!/bin/bash
+#SBATCH --job-name=JOB_NAME
+#SBATCH --out="JOB_NAME_%a.out"
+#SBATCH --error="JOB_NAME_%a.err"
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=4 --mem=8G 
+#SBATCH --array=1-10
+#SBATCH --mail-type=END,FAIL
 
-> `#!/bin/bash`
-
-
-> `#SBATCH --job-name=JOB_NAME`
-
-> `#SBATCH --out="slurm-%j.out"`
-
-> `#SBATCH --error="slurm-%j.err"`
-
-> `#SBATCH --time=5:00:00`
-
-> `#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=36 --mem=8G `
-
-> `#SBATCH --mail-type=ALL`
-
-> `echo -n "Start "`
-
-> `srun <<command>>`
-    
-> `echo "done"`
-
+ if [ $SLURM_ARRAY_TASK_ID -eq 1 ]
+then 
+    srun cargo run ...
+fi`
 
 and run `sbatch run.sh`
 
 
 ## rust command
-`cargo run --release -- tool benchmark '[3]' '[4]' '[0.1]' --bias_eta 1e200 --code_type RotatedTailoredCode --decoder tailored-mwpm --decoder_config '{"pcmg":true,"naive_residual_decoding":true}' --error_model tailored-sc-bell-init-phenomenological -m1000000 -e20000 -p0 --time_budget 7200 --ignore_logical_j;`
+`cargo run --release -- tool benchmark '[17,19]' '[1,1]' '[0.2]' --bias-eta 1000 --code-type rotated-tailored-code --decoder tailored-mwpm --decoder-config '{"pcmg":true,"naive_residual_decoding":true}' --noise-model tailored-sc-bell-init-phenomenological -m10000000 -e20000 -p0 --time-budget 30 --ignore-logical-j`
 
 help: `cargo run --release -- tool benchmark --help`
