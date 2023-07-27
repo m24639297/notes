@@ -11,6 +11,9 @@ Force to sync to local version
 First request an interactive shell: 
 `srun --pty -t 2:00:00 --mem=8G --cpus-per-task=4 -p interactive bash`.
 
+(new version?)
+`salloc -t 2:00:00 --mem=8G`
+
 In the shell run 
 `cargo build --release` 
 to compile.
